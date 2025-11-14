@@ -256,19 +256,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .lang-label {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      font-size: 0.8rem;
-      padding: 6px 12px;
-      border-radius: 12px;
-      margin-top: 8px;
-      letter-spacing: 0.5px;
-      user-select: none;
-      text-align: center;
-      transition: opacity 0.3s;
-      white-space: nowrap;
-    }
 
   </style>
 </head>
@@ -301,16 +288,15 @@
       <div id="current-lang" class="lang-icon">PT</div>
     </div>
     <div class="lang-options"></div>
-    <span class="lang-label" id="lang-label">Alterar idioma</span>
   </div>
 
   <script>
     // --- Dados de Tradução (Adaptados) ---
     const texts = {
-      pt: { title: "Braga After Dark (PT/EN)", description: "Descarregue o roteiro em português/inglês:", label: "Roteiro PT/EN", langLabel: "Alterar idioma" },
-      es: { title: "Braga After Dark (PT/EN)", description: "Descarga la guía en portugués/inglés:", label: "Guía PT/EN", langLabel: "Cambiar idioma" },
-      en: { title: "Braga After Dark (PT/EN)", description: "Download the guide in Portuguese/English:", label: "Guide PT/EN", langLabel: "Change language" },
-      fr: { title: "Braga After Dark (PT/EN)", description: "Téléchargez le guide en portugais/anglais:", label: "Guide PT/EN", langLabel: "Changer de langue" }
+      pt: { title: "Braga After Dark (PT/EN)", description: "Descarregue o roteiro em português/inglês:", label: "Roteiro PT/EN" },
+      es: { title: "Braga After Dark (PT/EN)", description: "Descarga la guía en portugués/inglés:", label: "Guía PT/EN" },
+      en: { title: "Braga After Dark (PT/EN)", description: "Download the guide in Portuguese/English:", label: "Guide PT/EN" },
+      fr: { title: "Braga After Dark (PT/EN)", description: "Téléchargez le guide en portugais/anglais:", label: "Guide PT/EN" }
     };
 
     const pdfLinks = {
@@ -378,7 +364,6 @@
     const flagMap = { pt: 'PT', es: 'ES', en: 'EN', fr: 'FR' };
     const currentLang = document.getElementById('current-lang');
     const langOptions = document.querySelector('.lang-options');
-    const langLabel = document.getElementById('lang-label');
     const menuOptions = document.getElementById('menu-options');
     const menuToggler = document.getElementById('menu-toggler');
 
@@ -437,7 +422,6 @@
       btn.href = pdfLinks[lang] || "#";
       btn.innerHTML = `<i class='lni lni-download'></i> ${content.label}`;
       document.title = content.title;
-      langLabel.textContent = content.langLabel;
       currentLang.textContent = flagMap[lang];
       renderDropdown(lang);
       renderMenu(lang);
